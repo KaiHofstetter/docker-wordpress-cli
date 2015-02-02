@@ -5,7 +5,7 @@ MAINTAINER Kai Hofstetter <kai.hofstetter@gmx.de>
 RUN apt-get update && \
     apt-get -y install apache2 libapache2-mod-php5 php5 php5-mysql mysql-server curl
 
-# Install WordPress
+# Download WordPress
 RUN curl -L "https://github.com/WordPress/WordPress/archive/4.1.tar.gz" > /wp-4.1.tar.gz && \
     rm /var/www/html/index.html && \
     tar -xzf /wp-4.1.tar.gz -C /var/www/html --strip-components=1 && \
@@ -21,17 +21,14 @@ ADD wp-config.php /var/www/html/wp-config.php
 # Apache access
 RUN chown -R www-data:www-data /var/www/html
 
-# Start MySQL and create WordPress DB 
+# Start MySQL, create WordPress DB and configure WordPress
 RUN /etc/init.d/mysql start && \
-    mysqladmin create wordpress
-
-# Configure WordPress
-RUN /etc/init.d/mysql start && \ 
+    mysqladmin create wordpress && \
     wp core install --path='/var/www/html' --allow-root --url='localhost' --title='WordPress Demo' --admin_user='admin' --admin_password='secret' --admin_email='test@test.com'
 
 # Add configuration script
-ADD start_apache.sh /start_apache.sh
+ADD run.sh /run.sh
 RUN chmod 755 /*.sh
 
 EXPOSE 80 
-CMD ["/start_apache.sh"]
+CMD ["/run.sh"]
