@@ -1,8 +1,9 @@
 #!/bin/sh
 
-echo "=> starting MySQL..."
+echo "=> Starting MySQL..."
 /etc/init.d/mysql start
 
-echo "=> starting Apache..."
-/usr/sbin/apache2ctl -D FOREGROUND
+./config_wordpress.sh
 
+echo "=> Starting Apache..."
+/usr/sbin/apache2ctl -D FOREGROUND

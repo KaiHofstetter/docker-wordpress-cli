@@ -21,12 +21,12 @@ ADD wp-config.php /var/www/html/wp-config.php
 # Apache access
 RUN chown -R www-data:www-data /var/www/html
 
-# Start MySQL, create WordPress DB and configure WordPress
+# Start MySQL, create WordPress DB
 RUN /etc/init.d/mysql start && \
-    mysqladmin create wordpress && \
-    wp core install --path='/var/www/html' --allow-root --url='localhost' --title='WordPress Demo' --admin_user='admin' --admin_password='secret' --admin_email='test@test.com'
-
+    mysqladmin create wordpress 
+    
 # Add configuration script
+ADD config_wordpress.sh /config_wordpress.sh
 ADD run.sh /run.sh
 RUN chmod 755 /*.sh
 
