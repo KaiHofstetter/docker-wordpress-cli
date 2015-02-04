@@ -30,5 +30,11 @@ ADD config_wordpress.sh /config_wordpress.sh
 ADD run.sh /run.sh
 RUN chmod 755 /*.sh
 
+# WordPress environment variables
+ENV WP_TITLE WordPress Demo 2
+ENV WP_ADMIN_USER admin_user
+ENV WP_ADMIN_PASSWORD secret
+ENV WP_ADMIN_EMAIL test@test.com
+
 EXPOSE 80 
 CMD ["/run.sh"]
