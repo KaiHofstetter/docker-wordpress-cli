@@ -20,15 +20,16 @@ ADD wp-config.php /var/www/html/wp-config.php
 
 # Apache access
 RUN chown -R www-data:www-data /var/www/html
-
-# Start MySQL, create WordPress DB
-RUN /etc/init.d/mysql start && \
-    mysqladmin create wordpress 
     
 # Add configuration script
 ADD config_wordpress.sh /config_wordpress.sh
+ADD config_mysql.sh /config_mysql.sh
 ADD run.sh /run.sh
 RUN chmod 755 /*.sh
+
+# MySQL environment variables
+ENV MYSQL_WP_USER WordPress
+ENV MYSQL_WP_PASSWORD secret
 
 # WordPress environment variables
 ENV WP_TITLE WordPress Demo
@@ -36,5 +37,5 @@ ENV WP_ADMIN_USER admin_user
 ENV WP_ADMIN_PASSWORD secret
 ENV WP_ADMIN_EMAIL test@test.com
 
-EXPOSE 80 
+EXPOSE 80 3306
 CMD ["/run.sh"]

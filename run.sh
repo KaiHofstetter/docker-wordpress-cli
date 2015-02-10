@@ -3,6 +3,7 @@
 echo "=> Starting MySQL..."
 /etc/init.d/mysql start
 
+./config_mysql.sh
 ./config_wordpress.sh
 
 echo "=> Starting Apache..."
