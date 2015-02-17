@@ -23,7 +23,7 @@ RUN chown -R www-data:www-data /var/www/html
     
 # Add configuration script
 ADD config_wordpress.sh /config_wordpress.sh
-ADD config_mysql.sh /config_mysql.sh
+ADD config_and_start_mysql.sh /config_and_start_mysql.sh
 ADD run.sh /run.sh
 RUN chmod 755 /*.sh
 

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-./config_mysql.sh
+./config_and_start_mysql.sh
 ./config_wordpress.sh
 
 echo "=> Starting Apache..."
