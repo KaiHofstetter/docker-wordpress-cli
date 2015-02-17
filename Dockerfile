@@ -22,8 +22,9 @@ ADD wp-config.php /var/www/html/wp-config.php
 RUN chown -R www-data:www-data /var/www/html
     
 # Add configuration script
-ADD config_wordpress.sh /config_wordpress.sh
 ADD config_and_start_mysql.sh /config_and_start_mysql.sh
+ADD config_apache.sh /config_apache.sh
+ADD config_wordpress.sh /config_wordpress.sh
 ADD run.sh /run.sh
 RUN chmod 755 /*.sh
 

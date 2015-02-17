@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ ! -f /mysql_configured ]; then
-    echo "=> MySQL not configured yet, configuring MySQL..."
+    echo "=> MySQL not configured yet, configuring MySQL ..."
 
     echo "=> Setting MySQL bind address to have access from the Docker host"
     sed -i 's/^bind-address\s*=.*$/bind-address = "0.0.0.0"/' /etc/mysql/my.cnf
