@@ -6,10 +6,10 @@ RUN apt-get update && \
     apt-get -y install apache2 libapache2-mod-php5 php5 php5-mysql mysql-server curl
 
 # Download WordPress
-RUN curl -L "https://github.com/WordPress/WordPress/archive/4.1.tar.gz" > /wp-4.1.tar.gz && \
+RUN curl -L "https://github.com/WordPress/WordPress/archive/4.1.1.tar.gz" > /wp-4.1.1.tar.gz && \
     rm /var/www/html/index.html && \
-    tar -xzf /wp-4.1.tar.gz -C /var/www/html --strip-components=1 && \
-    rm /wp-4.1.tar.gz
+    tar -xzf /wp-4.1.1.tar.gz -C /var/www/html --strip-components=1 && \
+    rm /wp-4.1.1.tar.gz
  
 # Download WordPress CLI
 RUN curl -L "https://github.com/wp-cli/wp-cli/releases/download/v0.17.1/wp-cli.phar" > /usr/bin/wp && \
