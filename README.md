@@ -27,6 +27,22 @@ The MySQL database is accessible from the host.
     
     Password: 'secret'
 
+### Changing the WordPress port
+If you don't want to use the default port 80 on the host to access WordPress, besides changing the Docker port mapping (e.g. '...-p 8080:80...'), you also need to change the configured WordPress site URL by setting the WP_URL environment variable (e.g. '...WP_URL="localhost:8080"...').
+WordPress needs to know the site URL used by the host, because WordPress redirects to the site URL and uses links to the site URL. 
+
+1. Run WordPress
+
+    ```
+    docker run --name my-wordpress -p 8080:80 -e WP_URL="localhost:8080" -d kaihofstetter/wordpress-cli
+    ```
+2. Access WordPress
+
+    ```
+    http://localhost:8080
+    ```
+
+
 ### Accessing the MySQL database
 Run WordPress with mapped MySQL port 3306:
 
@@ -52,6 +68,8 @@ You can use the following environment variables to configure MySQL and WordPress
   * MySQL user, used by WordPress
 * **MYSQL_WP_PASSWORD** (default is 'secret')
   * MySQL password, used by WordPress
+* **WP_URL** (default is 'localhost')
+  * The address of the WordPress site.
 * **WP_TITLE** (default is 'WordPress Demo')
   * Title of the WordPress blog
 * **WP_ADMIN_USER** (default is 'admin_user')
