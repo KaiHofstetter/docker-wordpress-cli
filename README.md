@@ -56,14 +56,15 @@ The MySQL database is accessible via ```port 3306```, ```user: WordPress``` and 
 ### Executing WP CLI commands
 The included WordPress command line interpreter (WP CLI) can be executed via ```docker exec```:
 
-``` 
+```
 docker exec -i -t my-wordpress sudo -E -u www-data wp --path="/var/www/html" ...
 ```
+
 For example:
 
-``` 
+```
 docker exec -i -t my-wordpress sudo -E -u www-data wp --path="/var/www/html" core version
-``` 
+```
 
 For more information about WP CLI commands : [http://wp-cli.org/commands/](http://wp-cli.org/commands/)
 
