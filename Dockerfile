@@ -12,7 +12,7 @@ RUN curl -L "https://wordpress.org/wordpress-4.2.2.tar.gz" > /wordpress-4.2.2.ta
     rm /wordpress-4.2.2.tar.gz
  
 # Download WordPress CLI
-RUN curl -L "https://github.com/wp-cli/wp-cli/releases/download/v0.17.1/wp-cli.phar" > /usr/bin/wp && \
+RUN curl -L "https://github.com/wp-cli/wp-cli/releases/download/v0.19.2/wp-cli-0.19.2.phar" > /usr/bin/wp && \
     chmod +x /usr/bin/wp
 
 # WordPress configuration
