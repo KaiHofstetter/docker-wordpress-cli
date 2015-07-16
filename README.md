@@ -60,6 +60,7 @@ The included WordPress command line interpreter (WP CLI) can be executed via ```
 docker exec -i -t my-wordpress sudo -E -u www-data wp --path="/var/www/html" ...
 ```
 For example:
+
 ``` 
 docker exec -i -t my-wordpress sudo -E -u www-data wp --path="/var/www/html" core version
 ``` 
