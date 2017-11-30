@@ -3,10 +3,10 @@ MAINTAINER Kai Hofstetter <kai.hofstetter@gmx.de>
 
 # Install lamp stack plus curl
 RUN apt-get update && \
-    apt-get -y install apache2 libapache2-mod-php5 php5 php5-mysql mysql-server curl
+    DEBIAN_FRONTEND=noninteractive apt-get -y install apache2 libapache2-mod-php5 php5 php5-mysql mysql-server curl
 
 # Download WordPress
-RUN wp_version=4.9 && \
+RUN wp_version=4.9.1 && \
     curl -L "https://wordpress.org/wordpress-${wp_version}.tar.gz" > /wordpress-${wp_version}.tar.gz && \
     rm /var/www/html/index.html && \
     tar -xzf /wordpress-${wp_version}.tar.gz -C /var/www/html --strip-components=1 && \
