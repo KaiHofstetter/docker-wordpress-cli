@@ -6,7 +6,7 @@ RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get -y install apache2 libapache2-mod-php5 php5 php5-mysql mysql-server curl
 
 # Download WordPress
-RUN wp_version=4.9.1 && \
+RUN wp_version=4.9.2 && \
     curl -L "https://wordpress.org/wordpress-${wp_version}.tar.gz" > /wordpress-${wp_version}.tar.gz && \
     rm /var/www/html/index.html && \
     tar -xzf /wordpress-${wp_version}.tar.gz -C /var/www/html --strip-components=1 && \
