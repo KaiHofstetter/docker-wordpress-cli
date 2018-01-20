@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# workaround for MySQL OverlayFS issue:
+# https://github.com/docker/for-linux/issues/72
+# https://docs.docker.com/engine/userguide/storagedriver/overlayfs-driver/#limitations-on-overlayfs-compatibility
+find /var/lib/mysql -type f -exec touch {} \;
+
 if [ ! -f /mysql_configured ]; then
     echo "=> MySQL not configured yet, configuring MySQL ..."
 
